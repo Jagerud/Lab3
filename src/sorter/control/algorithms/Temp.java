@@ -1,4 +1,5 @@
 package sorter.control.algorithms;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Temp extends SortAlgorithm {
@@ -14,7 +15,7 @@ public class Temp extends SortAlgorithm {
 
     }
 
-    public void doer (int left, int right, int v) {
+    public void doer(int left, int right, int v) {
 
         if (right > left) {
             int l = left, r = right;
@@ -31,12 +32,10 @@ public class Temp extends SortAlgorithm {
                     if (l == v) {
                         swap(l, r);
                         v = r;
-                    }
-                    else if (r == v) {
+                    } else if (r == v) {
                         swap(l, r);
                         v = l;
-                    }
-                    else {
+                    } else {
                         swap(l, r);
                     }
                     l++;

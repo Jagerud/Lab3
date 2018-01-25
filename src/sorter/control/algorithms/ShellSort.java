@@ -16,8 +16,8 @@ public class ShellSort extends SortAlgorithm {
     }*/
     public void sort() {
         for (int gap = getElementCount() / 2; gap > 0; gap /= 2.2) {
-        if (gap == 2) {
-            gap = 1;
+            if (gap == 2) {
+                gap = 1;
             }
             for (int i = gap; i < getElementCount(); i++) {
                 for (int j = i; j >= gap && cmp(j, j - gap) < 0; j -= gap) {

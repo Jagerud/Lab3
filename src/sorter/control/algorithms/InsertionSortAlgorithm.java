@@ -6,6 +6,14 @@ public class InsertionSortAlgorithm extends SortAlgorithm {
         super("Insertion sort");
     }
 
+    /**
+     * Sorts the vector using Insertionsort.
+     * <p>
+     * The sort() function should always be the main sorting
+     * function of each algorithm
+     *
+     * @see SortAlgorithm#sort()
+     */
     @Override
     public void sort() {
         int j;

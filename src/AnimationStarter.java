@@ -1,12 +1,5 @@
 import sorter.control.algorithms.*;
 import sorter.view.Animator;
-import sorter.view.AnimationWidget;
-
-
-import java.awt.*;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 /**
  * The class that is used to start the animator.
@@ -49,7 +42,7 @@ public class AnimationStarter {
         //animator.addAlgorithm(new BubbleSortAlgorithm());
         animator.addAlgorithm(new ImprovedBubbleSortAlgorithm());
         animator.addAlgorithm(new InsertionSortAlgorithm());
-        animator.addAlgorithm(new Temp());
+        animator.addAlgorithm(new QuickSortAlgorithm());
         animator.addAlgorithm(new ShellSort());
         //Add more algorithms here in the same way as for bubble sort
 

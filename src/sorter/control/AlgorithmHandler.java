@@ -90,13 +90,10 @@ public class AlgorithmHandler implements Runnable {
 
     /**
      * called when the algorithm is finished,
-     * must also notify the widget, so it can show that it's finished.
-     * <p>
-     * must be updated!
+     * changes color of finished algorithm
+     * <p
      */
     public void finished() {
-        // TODO Tell the widget to show that the algorithm is finished
-        //System.out.println("finished1");
         if (getElementCount() == sortVector.getSize()) {
 
             widget.paintFinishedAlgorithm(widget.getGraphics());
@@ -128,7 +125,6 @@ public class AlgorithmHandler implements Runnable {
      * Sets the vector that will be sorted
      * and repaints the widget
      * <p>
-     * must be updated!
      *
      * @param vec the vector
      */
@@ -177,14 +173,12 @@ public class AlgorithmHandler implements Runnable {
      * Tells the widget which two columns that has been swapped
      * and assures synchronisation.
      * <p>
-     * Must be updated
-     *
      * @param index1 the index of the first column
      * @param index2 the index of the second column
      */
     private void swapDone(int index1, int index2) {
         // TODO Add call to update widget
-        widget.repaint();                                       //Min
+        widget.repaint();
         //oneStepDone is called swapWeight times, in order to 
         //allow a swap to be more expensive than a comparison
         for (int i = 0; i < swapWeight; ++i) {
@@ -196,6 +190,7 @@ public class AlgorithmHandler implements Runnable {
      * Swaps the values at the two indices in the vector,
      * and tells the handler that it has made a swap and
      * what two elements were swapped
+     * Also paints the indexes swapped in different color.
      *
      * @param i the index of the first element
      * @param j the index of the first element
@@ -210,6 +205,7 @@ public class AlgorithmHandler implements Runnable {
     /**
      * Compares the values of the numbers at the two given indeces in the vector
      * and notifies the handler that a step has been done.
+     * Also paints the indexes compared in different color.
      *
      * @param i the index of the first number to compare
      * @param j the index of the second number to compare
@@ -218,16 +214,6 @@ public class AlgorithmHandler implements Runnable {
      * zero if the numbers at i and j are equal
      */
     public int cmp(int i, int j) {
-        /*
-         * TODO:
-         * If you want to show the comparisons, a call about that
-         * has to be made to the widget here.
-         * 
-         * In that case you also have to consider where and how to
-         * stop displaying the comparisons
-         */
-
-
         widget.lightUpYourFuture(widget.getGraphics(), i, j);
         /*if(i<j) {
             widget.paintComponent(widget.getGraphics());

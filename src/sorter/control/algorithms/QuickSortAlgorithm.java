@@ -1,60 +1,72 @@
 package sorter.control.algorithms;
 
-import sorter.control.DataSet;
+import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * Created by Sand on 2016-03-09.
- */
 public class QuickSortAlgorithm extends SortAlgorithm {
-    private DataSet vector;
-
     public QuickSortAlgorithm() {
-        super("Quick sort");
+        super("QuickSortAlgorithm");
     }
 
+    /**
+     * Sorts the vector using Quicksort.
+     * <p>
+     * The sort() function should always be the main sorting
+     * function of each algorithm
+     *
+     * @see SortAlgorithm#sort()
+     */
     @Override
     public void sort() {
+        int left = 0;
+        int right = getElementCount() - 1;
+        int v = ThreadLocalRandom.current().nextInt(left, right + 1);
+        doer(left, right, v);
 
-        //boolean check = true;
-        vector = handler.getWidget().getVector();
-        int pivotIndex = (int) Math.floor(Math.random() * (getElementCount() - 1));
-        if (pivotIndex < getElementCount()) {
-
-            int q = poop(pivotIndex, (getElementCount() - 1));
-            //int q=partition(a,p,r);
-            poop(pivotIndex, q);
-            poop(q + 1, (getElementCount() - 1));
-
-            //return j
-            /*sort(a,pivotIndex,q);
-            sort(a,q+1,rangeIndex);*/
-        }
     }
 
-    public int poop(int pivotIndex, int r) {
-        int x = vector.indexOf(pivotIndex);
-        int rangeIndex = pivotIndex - 1; //mellan range och pivot
-        int j = r + 1;
+    /**Quicksort algorithm, recursive method call when pointers cross
+     * Performs
+     *
+     * @param left, left pointer
+     * @param right, right pointer
+     * @param v, pivot index
+     */
+    public void doer(int left, int right, int v) {
 
-        while (true) {
-            rangeIndex++; //oklar
-            while (rangeIndex < getElementCount() && cmp(rangeIndex, x) < 0) { //inte säker på cmp:n
-                rangeIndex++;
-                System.out.println("sup/**/");
-            }
-            j--;
+        if (right > left) {
+            int l = left, r = right;
 
-            while (j > pivotIndex && cmp(vector.indexOf(j), x) < 0) {
-                System.out.println("--j");
-                j--;
-            }
-            if (rangeIndex < j) {
-                System.out.println("rangeIndex <j");
-                swap(rangeIndex, j);
-            } else {
-                return j;
-            }
+            do {
+                while (cmp(l, v) < 0) {
+                    l++;
+                }
+                while (cmp(r, v) > 0) {
+                    r--;
+                }
 
+                if (l <= r) {
+                    if (l == v) {
+                        swap(l, r);
+                        v = r;
+                    } else if (r == v) {
+                        swap(l, r);
+                        v = l;
+                    } else {
+                        swap(l, r);
+                    }
+                    l++;
+                    r--;
+                }
+            } while (l <= r);
+
+            if (left < r) {
+                v = ThreadLocalRandom.current().nextInt(left, r + 1);
+                doer(left, r, v);
+            }
+            if (l < right) {
+                v = ThreadLocalRandom.current().nextInt(l, right + 1);
+                doer(l, right, v);
+            }
         }
     }
-}//a[rangeIndex] < x
+}

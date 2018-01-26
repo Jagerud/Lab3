@@ -44,7 +44,6 @@ public class AnimationStarter {
         animator.addAlgorithm(new InsertionSortAlgorithm());
         animator.addAlgorithm(new QuickSortAlgorithm());
         animator.addAlgorithm(new ShellSort());
-        //Add more algorithms here in the same way as for bubble sort
 
 
         //Must be called to show the main frame.

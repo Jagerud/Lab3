@@ -13,7 +13,6 @@ import java.util.ArrayList;
  * This class is a widget that animates a sort algorithm, by showing
  * the integers as bars of a size corresponding to the size of the integer.
  * <p>
- * This class will have to be implemented by you!
  *
  * @author Filip Kingen Jägerud
  */
@@ -31,20 +30,10 @@ public class AnimationWidget extends JComponent /*implements Runnable */ {
      */
     private String algorithmName;
 
-    //private AnimationWidget animation2;
-    //private static int i = 0;
-
-    //private JFrame topFrame;
-
-
-    // TODO Add more variables...
-
-
     /**
      * Creates an instance of AnimationWidget with
      * a given vector and an algorithm name
-     * <p>
-     * it will probably have to do more things!
+     * Sets preferred size of window
      *
      * @param vector        the sortVector to draw
      * @param algorithmName the name of the algorithm
@@ -56,13 +45,13 @@ public class AnimationWidget extends JComponent /*implements Runnable */ {
         setPreferredSize(new Dimension(700, 300));
         //animation2 = new AnimationWidget(vector,algorithmName);
 
-
-        // TODO You will probably need to do some more stuff here
     }
 
 
     /**
-     * @param g
+     * Paints the window with rectangles relative
+     * in size to the size of the window.
+     * @param g, graphics
      */
     @Override
     public void paintComponent(Graphics g) {
@@ -107,6 +96,11 @@ public class AnimationWidget extends JComponent /*implements Runnable */ {
         }
     }
 
+    /**
+     * Paints all rectangles in the finished algorithm in different color
+     *
+     * @param g, graphics
+     */
     public void paintFinishedAlgorithm(Graphics g) {
         //Timer timer = new Timer(500,null);
 
@@ -138,6 +132,13 @@ public class AnimationWidget extends JComponent /*implements Runnable */ {
 
     }
 
+    /**
+     * Paints the indexes that are being compared in different colors
+     *
+     * @param g, graphics
+     * @param i, index to be painted
+     * @param j, index to be painted
+     */
     public void lightUpYourFuture(Graphics g, int i, int j) {
 
         g.setColor(Color.lightGray);
@@ -157,6 +158,13 @@ public class AnimationWidget extends JComponent /*implements Runnable */ {
                 getHeight() * vector.get(j) / vector.getMax() - 2);
     }
 
+    /**
+     * Paints the rectangles that where swapped in different color.
+     *
+     * @param g, graphics
+     * @param i, index to be painted
+     * @param j, index to be painted
+     */
     public void lightUpYourPast(Graphics g, int i, int j) {
 
 		/*g.setColor(Color.lightGray);
@@ -174,14 +182,22 @@ public class AnimationWidget extends JComponent /*implements Runnable */ {
         g.fillRect(getWidth() * j / vector.getSize(), getHeight() - getHeight() * vector.get(j) / vector.getMax() - 2,
                 getWidth() / vector.getSize() - 1 + 2 * vector.getMax() / getWidth(),
                 getHeight() * vector.get(j) / vector.getMax() - 2);
-
-        //TODO måla rött när cmd kallas, kalla på rödmedtoden då
     }
 
+    /**
+     * Returns the vector
+     *
+     * @return, vector
+     */
     public DataSet getVector() {
         return vector;
     }
 
+    /**
+     * Sets the vector
+     *
+     * @param vector
+     */
     public void setDataSet(DataSet vector) {
         this.vector = vector;
     }

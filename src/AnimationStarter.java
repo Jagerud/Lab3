@@ -23,8 +23,6 @@ public class AnimationStarter {
      */
     public static void main(String args[]) {
 
-        //final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-        //executorService.scheduleAtFixedRate(AnimationWidget::paintFinishedAlgorithm2, 0, 1, TimeUnit.SECONDS);
 
         //Creates a new animator that places all algorithm
         //widgets on top of each other

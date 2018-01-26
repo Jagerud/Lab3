@@ -23,7 +23,6 @@ public class AnimationWidget extends JComponent /*implements Runnable */ {
      * A reference to the vector that is sorted, which is animated by this class
      */
     private DataSet vector;
-    //final ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
 
     /**
      * The name of the algorithm
@@ -43,7 +42,6 @@ public class AnimationWidget extends JComponent /*implements Runnable */ {
         this.vector = vector;
         this.algorithmName = algorithmName;
         setPreferredSize(new Dimension(700, 300));
-        //animation2 = new AnimationWidget(vector,algorithmName);
 
     }
 
@@ -51,15 +49,11 @@ public class AnimationWidget extends JComponent /*implements Runnable */ {
     /**
      * Paints the window with rectangles relative
      * in size to the size of the window.
+     *
      * @param g, graphics
      */
     @Override
     public void paintComponent(Graphics g) {
-        //JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-
-        //topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-        //topFrame.setTitle(algorithmName);
-        //new Thread(animation2).start();
         g.setColor(Color.darkGray);
         this.setSize(new Dimension(getWidth(), getHeight()));
         g.fillRect(0, 0, getWidth(), getHeight());
@@ -77,57 +71,21 @@ public class AnimationWidget extends JComponent /*implements Runnable */ {
         }
     }
 
-    public void run() { //Målar om en färdig i ny färg med sleep
-        this.getGraphics().setColor(Color.YELLOW); //TODO Filip: Osäker på this och funkar inte, får inte ändra?
-        //new Thread(); något sådant?
-
-        for (int i = 0; i < vector.getSize(); i++) {
-
-            //Målar ut en rektangel med höjd/bredd relativ till fönstret och antal
-            this.getGraphics().fillRect(getWidth() * i / vector.getSize(), (getHeight() - getHeight() * vector.get(i) / vector.getMax()) - 2,
-                    getWidth() / vector.getSize() - 1 + 2 * vector.getMax() / getWidth(),
-                    ((getHeight() * vector.get(i) / vector.getMax())) - 2);
-
-            try {                                        //Snyggt men dålig lösning :(
-                Thread.sleep(30);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     /**
      * Paints all rectangles in the finished algorithm in different color
      *
      * @param g, graphics
      */
     public void paintFinishedAlgorithm(Graphics g) {
-        //Timer timer = new Timer(500,null);
 
         g.setColor(Color.YELLOW);
 
-        //scheduledExecutorService.scheduleAtFixedRate(() -> {
-        //int i =0;
         for (int i = 0; i < vector.getSize(); i++) {
-            //while (i<vector.getSize()){
-            //timer.start();
 
             //Målar ut en rektangel med höjd/bredd relativ till fönstret och antal
             g.fillRect(getWidth() * i / vector.getSize(), getHeight() - getHeight() * vector.get(i) / vector.getMax() - 2,
                     getWidth() / vector.getSize() - 1 + 2 * vector.getMax() / getWidth(),
                     getHeight() * vector.get(i) / vector.getMax() - 2);
-
-            //timer.restart();
-            //paintFinishedAlgorithm2();
-            /*try {										//Snyggt men dålig lösning :(
-				Thread.sleep(50);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}*/
-			/*scheduledExecutorService.scheduleWithFixedDelay(() -> {
-				stupid(1);
-			}, 0, 50, TimeUnit.MILLISECONDS);*/
-
         }
 
     }
@@ -166,19 +124,12 @@ public class AnimationWidget extends JComponent /*implements Runnable */ {
      * @param j, index to be painted
      */
     public void lightUpYourPast(Graphics g, int i, int j) {
-
-		/*g.setColor(Color.lightGray);
-		for (int l = 0; l < vector.getSize(); l++) {
-			g.fillRect(getWidth() * l / vector.getSize(), ((getHeight() - getHeight() * vector.get(l) / vector.getMax())),
-					(getWidth() / (vector.getSize()) -1 + (2 * vector.getMax() / getWidth())),
-					(((getHeight()) * vector.get(l) / vector.getMax())));
-		}*/
         g.setColor(Color.RED);
         //Målar ut en rektangel med höjd/bredd relativ till fönstret och antal
         g.fillRect(getWidth() * i / vector.getSize(), getHeight() - getHeight() * vector.get(i) / vector.getMax() - 2,
                 (getWidth() / (vector.getSize()) - 1 + 2 * vector.getMax() / getWidth()),
                 getHeight() * vector.get(i) / vector.getMax() - 2);
-        //g.setColor(Color.BL);
+
         g.fillRect(getWidth() * j / vector.getSize(), getHeight() - getHeight() * vector.get(j) / vector.getMax() - 2,
                 getWidth() / vector.getSize() - 1 + 2 * vector.getMax() / getWidth(),
                 getHeight() * vector.get(j) / vector.getMax() - 2);
@@ -202,14 +153,5 @@ public class AnimationWidget extends JComponent /*implements Runnable */ {
         this.vector = vector;
     }
 
-	/*public static int stupid (int x){
-		i=i+x;
-		return i;
-
-	}
-	*/
-
-
-    // TODO Add more methods...
 
 }

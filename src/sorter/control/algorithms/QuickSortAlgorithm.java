@@ -24,12 +24,13 @@ public class QuickSortAlgorithm extends SortAlgorithm {
 
     }
 
-    /**Quicksort algorithm, recursive method call when pointers cross
+    /**
+     * Quicksort algorithm, recursive method call when pointers cross
      * Performs
      *
-     * @param left, left pointer
+     * @param left,  left pointer
      * @param right, right pointer
-     * @param v, pivot index
+     * @param v,     pivot index
      */
     public void doer(int left, int right, int v) {
 

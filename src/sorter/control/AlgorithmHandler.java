@@ -22,8 +22,6 @@ import sorter.view.AnimationWidget;
  */
 public class AlgorithmHandler implements Runnable {
 
-
-    private int counter = 0;
     /**
      * The actual algorithm
      */
@@ -97,17 +95,9 @@ public class AlgorithmHandler implements Runnable {
         if (getElementCount() == sortVector.getSize()) {
 
             widget.paintFinishedAlgorithm(widget.getGraphics());
-
-
-            //widget.getGraphics().setColor(Color.CYAN);
-            //widget.run();
         }
-        //status.animationFinished();
-
-        //widget.repaint();
         status.increaseFinishedAlgs(); //kanske innan animation
         waitForOthers();
-        //.out.println("finished2");
     }
 
     /**
@@ -173,6 +163,7 @@ public class AlgorithmHandler implements Runnable {
      * Tells the widget which two columns that has been swapped
      * and assures synchronisation.
      * <p>
+     *
      * @param index1 the index of the first column
      * @param index2 the index of the second column
      */
@@ -215,12 +206,7 @@ public class AlgorithmHandler implements Runnable {
      */
     public int cmp(int i, int j) {
         widget.lightUpYourFuture(widget.getGraphics(), i, j);
-        /*if(i<j) {
-            widget.paintComponent(widget.getGraphics());
-            widget.repaint();
-        }*/
         oneStepDone();
-        //widget.repaint();
         return sortVector.cmp(i, j);
     }
 
